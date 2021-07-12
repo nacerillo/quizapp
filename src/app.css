@@ -1,8 +1,10 @@
 :root {
+
     background-color: #ecf5ff;
     font-size: 62.5%;
 }
 /*if i add a border to a box, it will include the width of the border in the box's width*/
+
 *{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -26,7 +28,11 @@ h1 {
     color: #56a5eb;
     margin-bottom: 5rem;
 }
-
+#home {
+  width: 50%;
+  height: 50%;
+  border: 1rem solid  #56a5eb;
+}
 h1 > span {
     font-size: 2.4rem;
     font-weight: 500;
@@ -51,7 +57,6 @@ h3 {
   align-items: center; 
   max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .flex-column {

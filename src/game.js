@@ -11,20 +11,10 @@ let score = 0;
 let counter = 0;
 let availableQs = []
 
-//load questions from JSON
-/*let questions = []
-  fetch("questions.json").then(res => {
-    console.log(res);
-    return res.json();
-  }).then(loadedQuestions => {
-    questions = loadedQuestions;
-    startGame();
-  }).catch(err => {
-    console.log(err);
-  });*/
 
+let questions = []
   //load in questions using trivia API
-  fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple')
+  fetch('http://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple')
     .then((res) => {
         return res.json();
     })
@@ -53,19 +43,11 @@ let availableQs = []
     .catch((err) => {
         console.error(err);
     });
-  let questions = []
-  fetch("questions.json").then(res => {
-    console.log(res);
-    return res.json();
-  }).then(loadedQuestions => {
-    questions = loadedQuestions;
-    startGame();
-  }).catch(err => {
-    console.log(err);
-  });
+
+
 
 const CORRECT = 10;
-const MAX_Questions = 3;
+const MAX_Questions = 10;
 
 
 startGame = () => {
