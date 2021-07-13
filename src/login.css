@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #333
+}
+.login {
+    width: 25%;
+    height: 50%;
+    border: 1rem solid  #56a5eb;
+  }
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+.user-input {
+    padding: 2rem 3rem;
+
+}
+.user-input input{
+    width: 80%;
+}
+.btn {
+    margin: 1rem;
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    width: 20rem;
+    text-align: center;
+}
