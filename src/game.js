@@ -1,15 +1,20 @@
 console.log("oh hello!");
 
 const question = document.getElementById("question");
+//const $question = $('#question')
+//const $choices = Array.from($('choice-text'));
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const progressText = document.getElementById("progressText");
+//const $progressText = $('#progressText');
 const scoreText = document.getElementById("score");
+//const $scoreText = $('#score');
 const progressBarFull = document.getElementById("progressBarFull");
 let currentQuestion = {}
 let acceptedAnswer = false;
 let score = 0;
 let counter = 0;
 let availableQs = []
+
 
 
 let questions = []
@@ -50,12 +55,12 @@ const CORRECT = 10;
 const MAX_Questions = 10;
 
 
+
 startGame = () => {
     score = 0;
     counter = 0;
     availableQs = [...questions];
-    console.log(availableQs);
-   
+    console.log(availableQs); 
     getNewQuestion();
 }
 
@@ -66,28 +71,59 @@ let getNewQuestion = () => {
   }
  
     counter++; 
+   
     progressText.innerText = `Question ${counter}/${MAX_Questions}`;
+    //console.log($progressText);
     //increase progress bar
     progressBarFull.style.width = `${(counter/MAX_Questions)*100}%`;
     let questionIndex = Math.floor(Math.random() * availableQs.length); 
     currentQuestion = availableQs[questionIndex];
     console.log(currentQuestion);
-    question.innerText = currentQuestion.question;
+    question.text() = currentQuestion.question;
     choices.forEach(choice => {
       const number = choice.dataset['number'];
-      choice.innerText = currentQuestion['choice' + number];
+      choice.text() = currentQuestion['choice' + number];
     });
     availableQs.splice(questionIndex,1);
     acceptedAnswer = true;
-
 };
+
+/*incrementScore = num => {
+  score += num;
+  scoreText.innerText = score;
+}*/
+
 
 incrementScore = num => {
   score += num;
-  scoreText.innerText = score;
+  scoreText.html() = score;
 }
 
-choices.forEach(choice => {
+
+
+  $choices.forEach(choice => {
+  choice.click.on('click',event => {
+  if(!acceptedAnswer) {return};
+      acceptedAnswer = false;
+      const selectedChoice = $(event.target);
+      const selectedAnswer = selectedChoice.dataset['number'];      
+      console.log(selectedAnswer,currentQuestion.answer);
+      
+      const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+      if(classToApply === 'correct'){
+        incrementScore(CORRECT);
+      }
+      selectedChoice.parentElement.classList.add(classToApply);
+      setTimeout(() => {
+        selectedChoice.parentElement.classList.remove(classToApply);
+        getNewQuestion();
+
+      }, 2000);
+   });
+  });
+  
+ 
+/*choices.forEach(choice => {
   choice.addEventListener('click', e => {
 
     if(!acceptedAnswer) {return};
@@ -111,6 +147,6 @@ choices.forEach(choice => {
       }, 2000);
 
   });
-});
+});*/
 
 
